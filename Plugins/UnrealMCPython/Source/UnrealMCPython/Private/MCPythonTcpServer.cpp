@@ -147,7 +147,7 @@ FString ConvertJsonValueToPythonLiteral(const TSharedPtr<FJsonValue>& JsonVal)
             for (const auto& Pair : Object->Values) {
                 if (!bFirst) DictLiteral += TEXT(", ");
                 
-                FString KeyString = Pair.Key;
+                FString KeyString(*Pair.Key);
                 // Escape key string as well (similar to EJson::String case)
                 KeyString = KeyString.Replace(TEXT("\\"), TEXT("\\\\"));
                 KeyString = KeyString.Replace(TEXT("\'"), TEXT("\\\'"));
